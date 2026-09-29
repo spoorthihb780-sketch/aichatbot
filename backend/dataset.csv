@@ -1,0 +1,37 @@
+text,label
+"I have an exam tomorrow and I am panicking",high_stress
+"I am extremely worried about my exam",high_stress
+"I feel like I cannot handle my exam pressure",high_stress
+"I am scared that I will fail",high_stress
+"I have three chapters left and my exam is tomorrow",high_stress
+"I am feeling very anxious about my studies",high_stress
+"I cannot stop worrying about my exam",high_stress
+"I feel overwhelmed with too much syllabus",high_stress
+"I am under huge pressure because of exams",high_stress
+"I am panicking because I did not study enough",high_stress
+"I am very nervous about tomorrow's exam",high_stress
+"I feel helpless because my exam is near",high_stress
+"I have too many subjects to study",medium_stress
+"I am worried about completing my syllabus",medium_stress
+"I have a lot of assignments and studying to do",medium_stress
+"I am finding it difficult to manage my study time",medium_stress
+"I am a little nervous about my exam",medium_stress
+"I have some stress because my exam is coming",medium_stress
+"I am struggling to balance my studies",medium_stress
+"I am worried about my preparation",medium_stress
+"I need help creating a study schedule",medium_stress
+"I have several chapters remaining",medium_stress
+"I am having trouble managing my time",medium_stress
+"I feel slightly stressed about studying",medium_stress
+"I am studying normally today",low_stress
+"I feel calm about my exam",low_stress
+"I am feeling relaxed",low_stress
+"I have finished most of my preparation",low_stress
+"I feel confident about my studies",low_stress
+"My exam preparation is going well",low_stress
+"I am taking a short break from studying",low_stress
+"I feel focused while studying",low_stress
+"I am not worried about my exam",low_stress
+"I am feeling good about my preparation",low_stress
+"I have enough time to prepare",low_stress
+"I am calm and ready to study",low_stress

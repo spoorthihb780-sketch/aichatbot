@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ExamEase | AI Student Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="brand">
+            <div class="logo">🎓</div>
+
+            <div>
+                <h1>ExamEase</h1>
+                <p>AI Student Assistant</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+
+            <div class="online">
+                <span></span>
+                AI Online
+            </div>
+
+            <button
+                class="clear-btn"
+                onclick="clearChat()"
+                title="Clear conversation">
+                🗑️
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-icon">🤖</div>
+
+        <h2>Your AI Study Companion</h2>
+
+        <p>
+            Ask me anything — study questions, coding,
+            exam preparation, projects, or general questions.
+        </p>
+
+    </section>
+
+
+    <!-- CHAT -->
+    <main id="chatBox" class="chat-box">
+
+        <div class="message bot">
+
+            <div class="avatar">🤖</div>
+
+            <div class="bubble">
+
+                <p>
+                    Hi! 👋 I'm
+                    <strong>ExamEase</strong>,
+                    your AI student assistant.
+                </p>
+
+                <p>
+                    I can help you with:
+                </p>
+
+                <ul class="welcome-list">
+
+                    <li>📚 Engineering subjects</li>
+                    <li>💻 Programming & coding</li>
+                    <li>📝 Exam preparation</li>
+                    <li>🧠 Study planning & focus</li>
+                    <li>🚀 Projects & assignments</li>
+                    <li>💡 General questions</li>
+
+                </ul>
+
+                <p>
+                    What would you like help with today?
+                </p>
+
+                <small>Just now</small>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- QUICK BUTTONS -->
+    <div class="quick-actions">
+
+        <button onclick="sendSuggestion('Explain DBMS normalization in simple words')">
+            📚 Explain a topic
+        </button>
+
+        <button onclick="sendSuggestion('Write a simple Python program to check whether a number is prime')">
+            💻 Coding help
+        </button>
+
+        <button onclick="sendSuggestion('I have an exam tomorrow. Give me a study plan')">
+            📝 Exam plan
+        </button>
+
+        <button onclick="sendSuggestion('I am feeling very stressed about my exam')">
+            🧠 Stress support
+        </button>
+        <button onclick="openStudyPlanner()">
+    📅 AI Study Planner
+</button>
+<button onclick="openQuizGenerator()">
+    📝 AI Quiz Generator
+</button>
+
+    </div>
+
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="language-bar">
+
+        <label for="languageSelect">
+            🌐 Response Language
+        </label>
+
+        <select id="languageSelect">
+            <option value="English">English</option>
+            <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
+        </select>
+
+    </div>
+
+
+    <!-- INPUT -->
+    <div class="input-container">
+
+        <button
+            id="micButton"
+            class="mic-btn"
+            onclick="startVoiceInput()"
+            title="Speak your question">
+            🎤
+        </button>
+
+        <input
+            id="messageInput"
+            type="text"
+            placeholder="Ask ExamEase anything..."
+            autocomplete="off"
+        >
+
+        <button
+            id="sendButton"
+            onclick="sendMessage()"
+            title="Send message">
+            ➤
+        </button>
+
+    </div>
+
+
+    <!-- VOICE STATUS -->
+    <p id="voiceStatus" class="voice-status"></p>
+
+
+    <p class="note">
+        ExamEase provides AI-powered educational and general assistance.
+        For important decisions, verify information with reliable sources.
+    </p>
+
+</div>
+<!-- =========================
+     AI STUDY PLANNER
+========================= -->
+
+<div id="plannerModal" class="planner-modal">
+
+    <div class="planner-box">
+
+        <button
+            class="planner-close"
+            onclick="closeStudyPlanner()">
+            ✕
+        </button>
+
+        <div class="planner-header">
+            <div class="planner-icon">📅</div>
+
+            <div>
+                <h2>AI Study Planner</h2>
+                <p>Create a personalized study plan with ExamEase.</p>
+            </div>
+            
+        </div>
+
+
+        <div class="planner-form">
+
+            <label for="plannerSubject">
+                📚 Subject
+            </label>
+
+            <input
+                id="plannerSubject"
+                type="text"
+                placeholder="Example: DBMS"
+            >
+
+
+            <label for="plannerTopics">
+                📖 Topics / Units
+            </label>
+
+            <textarea
+                id="plannerTopics"
+                rows="4"
+                placeholder="Example: Unit 1, Unit 2, Normalization, SQL, Transactions">
+            </textarea>
+
+
+            <label for="plannerDays">
+                📆 Days available
+            </label>
+
+            <input
+                id="plannerDays"
+                type="number"
+                min="1"
+                max="30"
+                placeholder="Example: 5"
+            >
+
+
+            <label for="plannerHours">
+                ⏰ Study hours per day
+            </label>
+
+            <input
+                id="plannerHours"
+                type="number"
+                min="1"
+                max="12"
+                placeholder="Example: 3"
+            >
+
+
+            <button
+                class="planner-generate"
+                onclick="generateStudyPlan()">
+                ✨ Generate Study Plan
+            </button>
+
+        </div>
+
+
+        <div
+            id="plannerResult"
+            class="planner-result">
+        </div>
+
+    </div>
+
+</div>
+<!-- AI QUIZ GENERATOR MODAL -->
+<div id="quizModal" class="quiz-modal">
+    <div class="quiz-box">
+
+        <button class="quiz-close" onclick="closeQuizGenerator()">✕</button>
+
+        <div class="quiz-header">
+            <div class="quiz-icon">📝</div>
+
+            <div>
+                <h2>AI Quiz Generator</h2>
+                <p>Generate an AI-powered quiz for your exam preparation.</p>
+            </div>
+        </div>
+
+        <!-- QUIZ FORM -->
+        <div id="quizForm" class="quiz-form">
+
+            <label for="quizSubject">📚 Subject</label>
+            <input
+                id="quizSubject"
+                type="text"
+                placeholder="Example: DBMS"
+            >
+
+            <label for="quizTopic">📖 Topic</label>
+            <input
+                id="quizTopic"
+                type="text"
+                placeholder="Example: Normalization"
+            >
+
+            <label for="quizCount">🔢 Number of Questions</label>
+            <input
+                id="quizCount"
+                type="number"
+                min="1"
+                max="20"
+                value="5"
+            >
+
+            <button
+                class="quiz-generate"
+                onclick="generateQuiz()"
+            >
+                ✨ Generate Quiz
+            </button>
+
+        </div>
+
+        <!-- QUIZ QUESTIONS -->
+        <div id="quizResult" class="quiz-result"></div>
+
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script src="chat.js"></script>
+
+</body>
+</html>
